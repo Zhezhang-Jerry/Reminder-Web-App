@@ -7,9 +7,9 @@ I worked on the following tasks:
 
 Joy:
 I worked on the following tasks:
-1. <Edit the trello board> - This task is responsible for xyz functionality.
-2. <Insert Some Task Here> - This task is responsible for xyz functionality.
-3. <Insert Some Task Here> - This task is responsible for xyz functionality.
+1. <Edit the trello board> 
+2. <Complete the edit and delete reminder function, create a "joyjia" remote branch in github, compares with Jerry's code>
+
 
 Ramansh:
 I worked on the following tasks:
