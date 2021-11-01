@@ -1,8 +1,8 @@
 October 26th (First Sprint Complete)
 Jerry:
 I worked on the following tasks:
-1. <Create github repo and trello board>
-2. <Finish edit and delete function on reminder_conteroller.js>
+1. <Create github repo "Term-Project-2520" and trello board>
+2. <Finish edit and delete function on reminder_conteroller.js push into "main" branch>
 3. <Insert Some Task Here> - This task is responsible for xyz functionality.
 
 Joy:
