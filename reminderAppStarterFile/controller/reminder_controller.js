@@ -43,7 +43,6 @@ let remindersController = {
   update: (req, res) => {
     let reminderToFind = req.params.id;
     let reminderArray = database.cindy.reminders[reminderToFind - 1]
-    let completedStatus = "";
     reminderArray["title"] = req.body.title
     reminderArray["description"] = req.body.description
     reminderArray["completed"] = req.body.completed === "true"
