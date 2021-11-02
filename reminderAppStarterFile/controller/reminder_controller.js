@@ -44,14 +44,9 @@ let remindersController = {
     let reminderToFind = req.params.id;
     let reminderArray = database.cindy.reminders[reminderToFind - 1]
     let completedStatus = "";
-    if (req.body.completed == "true") {
-      completedStatus = true;
-    } else {
-      completedStatus = false;
-    }
     reminderArray["title"] = req.body.title
     reminderArray["description"] = req.body.description
-    reminderArray["completed"] = completedStatus
+    reminderArray["completed"] = req.body.completed === "true"
     res.redirect("/reminders");
   },
 
