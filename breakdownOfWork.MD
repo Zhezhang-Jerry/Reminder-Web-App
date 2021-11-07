@@ -1,4 +1,5 @@
 November 8th (Second Sprint Complete)
+
 Jerry:
 I worked on the following tasks:
 1. <Insert Some Task Here> - This task is responsible for xyz functionality.
