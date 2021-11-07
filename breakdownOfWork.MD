@@ -7,8 +7,8 @@ I worked on the following tasks:
 Joy:
 I worked on the following tasks:
 1. "watched the passport.js videos"
-2. "<Completed the first draft for Task1: add local login and registration>"
-3. "<Update Trello board>"
+2. "Completed the first draft for Task1: add local login and registration"
+3. "Update Trello board"
 
 
 Ramansh:
@@ -33,7 +33,7 @@ I worked on the following tasks:
 Joy:
 I worked on the following tasks:
 1. <Complete the edit and delete reminder function, create a "joyjia" remote branch in github, compares with Jerry's code>
-2. <Edit Trello board>
+2. "Edit Trello board"
 
 
 Ramansh:
