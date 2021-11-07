@@ -1,3 +1,27 @@
+November 8th (Second Sprint Complete)
+Jerry:
+I worked on the following tasks:
+1. <Insert Some Task Here> - This task is responsible for xyz functionality.
+2. <Insert Some Task Here> - This task is responsible for xyz functionality.
+
+Joy:
+I worked on the following tasks:
+1. <watched the passport.js videos>
+2. <Completed the first draft for Task1: add local login and registration>
+3. <Update Trello board> 
+
+
+Ramansh:
+I worked on the following tasks:
+1. <Insert Some Task Here> - This task is responsible for xyz functionality.
+2. <Insert Some Task Here> - This task is responsible for xyz functionality.
+3. <Insert Some Task Here> - This task is responsible for xyz functionality.
+
+
+
+
+
+
 October 26th (First Sprint Complete)
 Jerry:
 I worked on the following tasks:
