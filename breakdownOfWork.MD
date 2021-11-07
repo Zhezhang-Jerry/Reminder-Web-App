@@ -6,9 +6,9 @@ I worked on the following tasks:
 
 Joy:
 I worked on the following tasks:
-1. "watched the passport.js videos"
+1. "Watched the passport.js videos"
 2. "Completed the first draft for Task1: add local login and registration"
-3. "Update Trello board"
+3. "Updated Trello board"
 
 
 Ramansh:
