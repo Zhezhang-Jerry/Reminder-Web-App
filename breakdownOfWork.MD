@@ -2,8 +2,8 @@ November 8th (Second Sprint Complete)
 
 Jerry:
 I worked on the following tasks:
-1. <Insert Some Task Here> - This task is responsible for xyz functionality.
-2. <Insert Some Task Here> - This task is responsible for xyz functionality.
+1. "Watched the passport.js videos"
+2. "Finish the local login part"
 
 Joy:
 I worked on the following tasks:
