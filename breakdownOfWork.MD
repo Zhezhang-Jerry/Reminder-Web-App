@@ -4,6 +4,7 @@ Jerry:
 I worked on the following tasks:
 1. "Watched the passport.js videos"
 2. "Finish the local login part"
+3. "Add the logout button"
 
 Joy:
 I worked on the following tasks:
