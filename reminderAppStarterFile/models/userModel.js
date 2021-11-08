@@ -1,4 +1,4 @@
-const database = [
+const loginDatabase = [
   {
     id: 1,
     name: "Jimmy Smith",
@@ -21,14 +21,14 @@ const database = [
 
 const userModel = {
   findOne: (email) => {
-    const user = database.find((user) => user.email === email);
+    const user = loginDatabase.find((user) => user.email === email);
     if (user) {
       return user;
     }
     throw new Error(`Couldn't find user with email: ${email}`);
   },
   findById: (id) => {
-    const user = database.find((user) => user.id === id);
+    const user = loginDatabase.find((user) => user.id === id);
     if (user) {
       return user;
     }
@@ -36,4 +36,4 @@ const userModel = {
   },
 };
 
-module.exports = { database, userModel };
+module.exports = { loginDatabase, userModel };
