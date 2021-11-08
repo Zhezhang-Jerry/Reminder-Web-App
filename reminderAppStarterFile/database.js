@@ -1,4 +1,4 @@
-let Database = {
+let database = {
     cindy: {
         reminders: [{id: 1, title: "abc", description: "abcabc", completed: false}]
     },
@@ -6,5 +6,5 @@ let Database = {
         reminders: []
     } 
 }
-
-module.exports = Database;
+  
+  module.exports = database;
