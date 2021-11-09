@@ -134,3 +134,28 @@ footer.footer {
   margin-bottom: 10px;
   margin-top: 10px;
 }
+
+.loginpic{
+  display:block;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 20px;
+}
+
+.text-center{
+  padding-top: 10px;
+  color:#515da1;
+}
+
+.github{
+  padding-top: 20px;
+  text-align: center;
+}
+
+.account{
+  text-align: center;
+}
+
+.btn{
+  margin-top: 10px;
+}

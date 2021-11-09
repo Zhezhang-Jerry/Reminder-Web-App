@@ -11,10 +11,11 @@ let authController = {
     res.render("auth/register");
   },
 
-  loginSubmit: passport.authenticate("local", {
+  loginSubmit: (req, res, next) => {
+    passport.authenticate("local", {
     successRedirect: "/reminder", // req.login()
-    failureRedirect: "/login",
-  }),
+    failureRedirect: "/auth/login",
+  }) (req, res, next)},
 
   registerSubmit: (req, res) => {
     let registerObj = {
@@ -25,8 +26,12 @@ let authController = {
     }
     database.push(registerObj)
     console.log(database)
-    res.redirect("/login")
+    res.redirect("/auth/login")
   },
+  logout: (req, res) => {
+    req.logout();
+    res.redirect("/auth/login")
+  }
 };
 
 module.exports = authController;
