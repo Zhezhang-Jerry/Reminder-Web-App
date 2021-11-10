@@ -6,6 +6,7 @@ I worked on the following tasks:
 2. "Finish the local login part"
 3. "Add the logout button"
 4. "Finish the register function"
+5. "Finish the github login"
 
 Joy:
 I worked on the following tasks:
