@@ -25,13 +25,18 @@ let authController = {
       password: req.body.password
     }
     database.push(registerObj)
-    console.log(database)
     res.redirect("/auth/login")
   },
   logout: (req, res) => {
     req.logout();
     res.redirect("/auth/login")
-  }
-};
+  },
+  githubLogin: (req, res, next) => {
+    passport.authenticate('github', { scope: [ 'user:email' ] })(req, res, next)
+  },
+  gitback: (req, res, next) => {
+    passport.authenticate('github', { failureRedirect: '/auth/login',  successRedirect: "/reminder"})(req, res, next)
+    
+  }}
 
 module.exports = authController;

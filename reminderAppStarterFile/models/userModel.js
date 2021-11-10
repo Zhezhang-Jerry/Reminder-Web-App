@@ -34,6 +34,17 @@ const userModel = {
     }
     throw new Error(`Couldn't find user with id: ${id}`);
   },
+  findGithubId: (profile) => {
+    const user = loginDatabase.find((user) => user.id === profile.id);
+    if (user) {
+      return user;
+    }
+    else {
+      loginDatabase.push({"id": profile.id, "name": profile.name, "email": profile.email})
+      const GitHubUser = userModel.findById(profile.id)
+      return GitHubUser
+    }
+  }
 };
 
 module.exports = { loginDatabase, userModel };
