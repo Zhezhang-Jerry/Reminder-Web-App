@@ -1,6 +1,11 @@
 let database = require("../database");
+let loginDatabase = require("../models/userModel")
 
 let remindersController = {
+  dashboard: (req,res) => {
+    res.render("reminder/dashboard", { user: req.user})
+  }
+  ,
   list: (req, res) => {
     res.render("reminder/index", { reminders: database.cindy.reminders });
   },

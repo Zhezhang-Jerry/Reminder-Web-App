@@ -7,7 +7,9 @@ const { ensureAuthenticated } = require("../middleware/checkAuth") //
 
 const router = express.Router();
 
-router.get("/",ensureAuthenticated, reminderController.list);
+router.get("/dashboard", ensureAuthenticated, reminderController.dashboard)
+
+router.get("/", reminderController.list);
 
 router.get("/new", reminderController.new);
 

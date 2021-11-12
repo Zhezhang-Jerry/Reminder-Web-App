@@ -3,10 +3,11 @@ const app = express(); //
 require("dotenv").config()
 const path = require("path"); //
 const ejsLayouts = require("express-ejs-layouts"); //
-const session = require("express-session") //
+const session = require("express-session"); //
 
-const reminderRoute = require("./routes/reminderRoute")
-const authRoute = require("./routes/authRoute")
+const reminderRoute = require("./routes/reminderRoute");
+const authRoute = require("./routes/authRoute");
+// const dashboardRoute = require("./routes/dashboard")
 
 app.use(express.static(path.join(__dirname, "public"))); //
 
@@ -32,6 +33,7 @@ app.use(passport.initialize()); // use passport
 app.use(passport.session()); // use session
 
 app.use("/reminder", reminderRoute);
+// app.use("/dashboard", dashboardRoute);
 app.use("/auth", authRoute);
 
 app.listen(3001, function () {

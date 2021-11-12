@@ -13,7 +13,7 @@ let authController = {
 
   loginSubmit: (req, res, next) => {
     passport.authenticate("local", {
-    successRedirect: "/reminder", // req.login()
+    successRedirect: "/reminder/dashboard", // req.login()
     failureRedirect: "/auth/login",
   }) (req, res, next)},
 
@@ -35,7 +35,7 @@ let authController = {
     passport.authenticate('github', { scope: [ 'user:email' ] })(req, res, next)
   },
   gitback: (req, res, next) => {
-    passport.authenticate('github', { failureRedirect: '/auth/login',  successRedirect: "/reminder"})(req, res, next)
+    passport.authenticate('github', { failureRedirect: '/auth/login',  successRedirect: "/reminder/dashboard"})(req, res, next)
     
   }}
 
