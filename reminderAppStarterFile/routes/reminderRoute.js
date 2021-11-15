@@ -9,18 +9,22 @@ const router = express.Router();
 
 router.get("/dashboard", ensureAuthenticated, reminderController.dashboard)
 
-router.get("/", reminderController.list);
+router.get("/admin", ensureAuthenticated, reminderController.admin);
 
-router.get("/new", reminderController.new);
+router.post("/destroy/:id", ensureAuthenticated, reminderController.destroy);
 
-router.get("/:id", reminderController.listOne);
+router.get("/", ensureAuthenticated, reminderController.list);
 
-router.get("/:id/edit", reminderController.edit);
+router.get("/new", ensureAuthenticated, reminderController.new);
 
-router.post("/", reminderController.create);
+router.get("/:id", ensureAuthenticated, reminderController.listOne);
 
-router.post("/update/:id", reminderController.update);
+router.get("/:id/edit", ensureAuthenticated, reminderController.edit);
 
-router.post("/delete/:id", reminderController.delete);
+router.post("/", ensureAuthenticated, reminderController.create);
+
+router.post("/update/:id", ensureAuthenticated, reminderController.update);
+
+router.post("/delete/:id", ensureAuthenticated, reminderController.delete);
 
 module.exports = router;

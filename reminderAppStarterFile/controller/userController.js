@@ -31,8 +31,17 @@ const getUserByGitHubIdOrCreate = (profile) => {
   return null;
 }
 
+const getUserPosition = (id) => {
+  let user = userModel.findAdmin(id);
+  if (user.position == "admin") {
+    return user;
+  }
+  return null;
+}
+
 module.exports = {
   getUserByEmailIdAndPassword,
   getUserById,
   getUserByGitHubIdOrCreate,
+  getUserPosition,
 };

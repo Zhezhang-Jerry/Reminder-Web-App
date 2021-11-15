@@ -1,11 +1,27 @@
 let database = require("../database");
-let loginDatabase = require("../models/userModel")
+let sessionData = require("../models/userModel").sessionData
+const userController = require("./userController")
+const session = require("express-session");
+const sessionStore = require("sessionstore")
+
 
 let remindersController = {
   dashboard: (req,res) => {
     res.render("reminder/dashboard", { user: req.user})
-  }
-  ,
+  },
+  admin: (req, res) => {
+    let user = userController.getUserPosition(req.user.id)
+    const sessionIDArray = Object.keys(req.sessionStore.sessions)
+    console.log(sessionData)
+    console.log(sessionIDArray)
+    if (user.position == "admin") {
+      res.render("reminder/admin", { user: req.user, sessionData: sessionIDArray})}
+    },
+    destroy: (req, res) => {
+      let userSessionID = req.params.id;
+      delete req.sessionStore.sessions[userSessionID]
+      console.log(req.sessionStore)
+  },
   list: (req, res) => {
     res.render("reminder/index", { reminders: database.cindy.reminders });
   },

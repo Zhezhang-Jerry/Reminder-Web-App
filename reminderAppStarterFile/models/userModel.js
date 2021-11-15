@@ -19,6 +19,23 @@ const loginDatabase = [
   },
 ];
 
+const adminDatabase = [
+  {
+    id: 1,
+    position: "admin",
+  },
+  {
+    id: 2,
+    position: "user",
+  },
+  {
+    id: 3,
+    position: "user",
+  },
+]
+
+const sessionData = []
+
 const userModel = {
   findOne: (email) => {
     const user = loginDatabase.find((user) => user.email === email);
@@ -44,7 +61,14 @@ const userModel = {
       const GitHubUser = userModel.findById(profile.id)
       return GitHubUser
     }
+  },
+  findAdmin: (id) => {
+    const user = adminDatabase.find((user) => user.id === id);
+    if (user) {
+      return user;
+    }
+    throw new Error(`You are not admin user: ${id}`)
   }
 };
 
-module.exports = { loginDatabase, userModel };
+module.exports = { loginDatabase, adminDatabase, userModel, sessionData };

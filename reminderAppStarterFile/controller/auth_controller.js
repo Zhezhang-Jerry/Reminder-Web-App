@@ -1,5 +1,7 @@
 let database = require("../models/userModel").loginDatabase;
 const passport = require("../middleware/passport");
+let sessionData = require("../models/userModel").sessionData
+const session = require("express-session"); //
 
 
 let authController = {
@@ -15,7 +17,9 @@ let authController = {
     passport.authenticate("local", {
     successRedirect: "/reminder/dashboard", // req.login()
     failureRedirect: "/auth/login",
-  }) (req, res, next)},
+  }) (req, res, next)
+    sessionData.push(req.sessionID)
+},
 
   registerSubmit: (req, res) => {
     let registerObj = {
@@ -29,6 +33,8 @@ let authController = {
   },
   logout: (req, res) => {
     req.logout();
+    req.session.destroy();
+    sessionData.pop(req.sessionID)
     res.redirect("/auth/login")
   },
   githubLogin: (req, res, next) => {
