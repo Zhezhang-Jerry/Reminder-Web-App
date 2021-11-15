@@ -7,6 +7,7 @@ I worked on the following tasks:
 3. "Add the logout button"
 4. "Finish the register function"
 5. "Finish the github login"
+6. "Finish the admin user"
 
 Joy:
 I worked on the following tasks:
