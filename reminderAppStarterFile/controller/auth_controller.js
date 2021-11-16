@@ -1,6 +1,6 @@
 let database = require("../models/userModel").loginDatabase;
 const passport = require("../middleware/passport");
-let sessionData = require("../models/userModel").sessionData
+let userObject = require("../models/userModel").userObject
 const session = require("express-session"); //
 
 
@@ -18,7 +18,7 @@ let authController = {
     successRedirect: "/reminder/dashboard", // req.login()
     failureRedirect: "/auth/login",
   }) (req, res, next)
-    sessionData.push(req.sessionID)
+    userObject[req.sessionID] = req.user.id
 },
 
   registerSubmit: (req, res) => {
@@ -34,7 +34,6 @@ let authController = {
   logout: (req, res) => {
     req.logout();
     req.session.destroy();
-    sessionData.pop(req.sessionID)
     res.redirect("/auth/login")
   },
   githubLogin: (req, res, next) => {
