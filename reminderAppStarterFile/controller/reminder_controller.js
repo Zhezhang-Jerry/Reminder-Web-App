@@ -7,7 +7,7 @@ const sessionStore = require("sessionstore")
 
 let remindersController = {
   dashboard: (req,res) => {
-    res.render("reminder/dashboard", { user: req.user})
+    res.render("reminder/dashboard", { user: req.user, userPosition: req.user.position})
   },
   admin: (req, res) => {
     let user = userController.getUserPosition(req.user.id)

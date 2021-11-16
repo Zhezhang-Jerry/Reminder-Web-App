@@ -1,6 +1,16 @@
-<div class="container">
+<div class="homecontainer">
+    <div class="pic">
+        <img id="userpic" src="<%= user.pic %>" alt="UserPic">
+        <input type="file" name="file"  id="file">
+        <script src="/script.js"></script>
+    </div>
+<div class="dashboard">
     <h1 class="mt-4">Dashboard</h1>
     <p class="lead mb-3">Welcome <%= user.name %></p>
-    <a href="/reminder">Your reminder</a>
+    <% if (userPosition == "admin") { %>
+     <a href="/reminder/admin" class="btn btn-secondary">Admin</a>
+     <% } %>
+    <a href="/reminder" class="btn btn-secondary">Your reminder</a>
     <a href="/auth/logout" class="btn btn-secondary">Logout</a>
+    
 </div>

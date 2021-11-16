@@ -13,5 +13,6 @@ router.post("/register", authController.registerSubmit);
 router.get("/logout", authController.logout)
 router.get("/github", authController.githubLogin)
 router.get("/github/callback", authController.gitback)
+// router.get("/", authController.unsplashpic)
 
 module.exports = router;
