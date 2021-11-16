@@ -14,6 +14,7 @@ I worked on the following tasks:
 1. "Watched the passport.js videos"
 2. "Completed the first draft for Task1: add local login and registration"
 3. "Updated Trello board"
+4. "Finish the picture upload "
 
 
 Ramansh:

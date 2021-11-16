@@ -16,7 +16,6 @@ let remindersController = {
       res.render("reminder/admin", { user: req.user, userObject: userObject })}
     },
   destroy: (req, res) => {
-    console.log(req.user.name)
       let userSessionID = req.params.id;
       delete req.sessionStore.sessions[userSessionID]
       delete userObject[userSessionID]
