@@ -2,11 +2,12 @@
     <h1 class="mt-4">Dashboard</h1>
     <p class="lead mb-3">Welcome <%= user.name %></p>
     <a href="/reminder">Your reminder</a>
-    <% sessionData.forEach(sessionID => { %>
-     <p>Current Active Session: <%= sessionID %> </p>
+    <% for( const [sessionID, userID] of Object.entries(userObject) ) { %>
+        <p>Current Active Session: <%= sessionID %> </p>
+        <p>userID: <%=userID  %> </p>
         <form method="POST" action=<%= "/reminder/destroy/" + sessionID %>>
         <button type="submit">revoke</button>
         </form>
-    <% }) %>
+    <% } %>
     <a href="/auth/logout" class="btn btn-secondary">Logout</a>
 </div>

@@ -34,7 +34,8 @@ const adminDatabase = [
   },
 ]
 
-const sessionData = []
+// Contain sessionID and userID, sessionID is key and userID is value.
+const userObject = {}
 
 const userModel = {
   findOne: (email) => {
@@ -71,4 +72,4 @@ const userModel = {
   }
 };
 
-module.exports = { loginDatabase, adminDatabase, userModel, sessionData };
+module.exports = { loginDatabase, adminDatabase, userModel, userObject, };

@@ -36,7 +36,7 @@ const getUserPosition = (id) => {
   if (user.position == "admin") {
     return user;
   }
-  return null;
+  throw new Error(`You are not admin user: ${id}`)
 }
 
 module.exports = {
