@@ -34,6 +34,7 @@ app.use(passport.session()); // use session
 app.use("/reminder", reminderRoute);
 app.use("/auth", authRoute);
 
+
 app.listen(3001, function () {
   console.log(
     "Server running. Visit: localhost:3001/reminder in your browser 🚀"

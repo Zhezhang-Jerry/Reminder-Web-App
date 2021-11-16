@@ -21,6 +21,7 @@ const localLogin = new LocalStrategy(
 // session has been created.  req.user = user
 passport.serializeUser((user, done) => {
   done(null, user.id);
+  console.log(user.id)
 });
 
 passport.deserializeUser((id, done) => {

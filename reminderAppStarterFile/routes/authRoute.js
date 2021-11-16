@@ -2,7 +2,7 @@ const express = require("express");
 const passport = require("../middleware/passport");
 const { forwardAuthenticated } = require("../middleware/checkAuth");
 const authController = require("../controller/auth_controller")
-const fetch = require("node-fetch");
+// const fetch = require("node-fetch");
 
 const router = express.Router();
 
