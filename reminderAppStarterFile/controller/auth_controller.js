@@ -22,10 +22,12 @@ let authController = {
       id: database.length + 1,
       name: req.body.name,
       email: req.body.email,
+      role: "basic",
       password: req.body.password
     }
     database.push(registerObj)
     res.redirect("/auth/login")
+    console.log(database[database.length -1])
   },
   logout: (req, res) => {
     req.logout();
@@ -36,7 +38,16 @@ let authController = {
   },
   gitback: (req, res, next) => {
     passport.authenticate('github', { failureRedirect: '/auth/login',  successRedirect: "/reminder/dashboard"})(req, res, next)
+  },
+  admin: (req, res, next) => {
+    res.render("auth/admin", {
+      name: req.user.name, 
+      activeSessions: req.sessionStore.all((err, sessions) => {
+        return sessions
+      })});
     
-  }}
+    
+  }
+}
 
 module.exports = authController;

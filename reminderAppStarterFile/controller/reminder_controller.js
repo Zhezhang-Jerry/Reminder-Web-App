@@ -59,6 +59,11 @@ let remindersController = {
     database.cindy.reminders.splice(reminderToFind-1, 1);
     res.redirect("/reminder");
   },
+
+  revoke: (req, res) => {
+    let sessionToKill = req.params.id;
+    req.sessionStore,destroy
+  }
 };
 
 module.exports = remindersController;

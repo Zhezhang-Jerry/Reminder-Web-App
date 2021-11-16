@@ -1,22 +1,32 @@
 const loginDatabase = [
   {
     id: 1,
-    name: "Jimmy Smith",
-    email: "jimmy123@gmail.com",
-    password: "jimmy123!",
+    name: "Ramansh Chhabra",
+    email: "ramanshc@yahoo.com",
+    password: "Ramansh123",
+    role: "admin"
   },
   {
     id: 2,
     name: "Johnny Doe",
     email: "johnny123@gmail.com",
     password: "johnny123!",
+    role: "basic"
   },
   {
     id: 3,
     name: "Jonathan Chen",
     email: "jonathan123@gmail.com",
     password: "jonathan123!",
+    role: "basic"
   },
+  {
+    id: 4,
+    name: "Jonathan Chen",
+    email: "k@k.com",
+    password: "k",
+    role: "basic"
+  }
 ];
 
 const userModel = {
