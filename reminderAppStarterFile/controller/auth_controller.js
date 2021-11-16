@@ -2,6 +2,7 @@ let database = require("../models/userModel").loginDatabase;
 const passport = require("../middleware/passport");
 let userObject = require("../models/userModel").userObject
 const session = require("express-session"); //
+const fetch = require("node-fetch")
 
 
 let authController = {
@@ -22,13 +23,21 @@ let authController = {
 },
 
   registerSubmit: (req, res) => {
-    let registerObj = {
-      id: database.length + 1,
-      name: req.body.name,
-      email: req.body.email,
-      password: req.body.password
-    }
-    database.push(registerObj)
+    const picid = process.env.UNSPLASH_ACCESS_ID;
+    const url = `https://api.unsplash.com/photos/random/?client_id=${picid}`;
+    fetch(url)
+    .then((data) => data.json())
+    .then((newData) => {
+      let userImage = newData.urls.small;
+      let registerObj = {
+        id: database.length + 1,
+        name: req.body.name,
+        email: req.body.email,
+        password: req.body.password,
+        pic: userImage,
+      };
+      database.push(registerObj)
+    })
     res.redirect("/auth/login")
   },
   logout: (req, res) => {
@@ -42,6 +51,10 @@ let authController = {
   gitback: (req, res, next) => {
     passport.authenticate('github', { failureRedirect: '/auth/login',  successRedirect: "/reminder/dashboard"})(req, res, next)
     
-  }}
+  },
+  unsplashpic: () => {
+    const clientID = process.env.UNSPLASH_ACCESS_ID;
+  },
+}
 
 module.exports = authController;

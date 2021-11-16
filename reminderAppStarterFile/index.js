@@ -5,16 +5,31 @@ const path = require("path"); //
 const ejsLayouts = require("express-ejs-layouts"); //
 const session = require("express-session"); //
 const sessionStore = require("sessionstore")
-
+const multer = require("multer");
+const imgur = require("imgur")
 
 const reminderRoute = require("./routes/reminderRoute");
 const authRoute = require("./routes/authRoute");
+
+const storage = multer.diskStorage({
+  destination: "./uploads",
+  filename: (req, file, callback) => {
+    callback(
+      null,
+      file.fieldname + "-" + Date.now() + path.extname(file.originalname)
+    );
+  },
+});
+const upload = multer({
+  storage: storage,
+});
 
 app.use(express.static(path.join(__dirname, "public"))); //
 
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: false })); // req.body
-app.use(ejsLayouts); //
+app.use(ejsLayouts); 
+app.use(upload.any())
 
 app.use(
   session({
