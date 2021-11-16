@@ -18,7 +18,6 @@ let authController = {
     successRedirect: "/reminder/dashboard", // req.login()
     failureRedirect: "/auth/login",
   }) (req, res, next)
-    console.log(req.sessionID)
     userObject[req.sessionID] = req.user.id
 },
 
