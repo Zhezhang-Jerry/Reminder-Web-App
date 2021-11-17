@@ -40,14 +40,16 @@ let authController = {
     passport.authenticate('github', { failureRedirect: '/auth/login',  successRedirect: "/reminder/dashboard"})(req, res, next)
   },
   admin: (req, res, next) => {
+    // Will display active users on admin.ejs
     res.render("auth/admin", {
       name: req.user.name, 
-      seshList: req.sessionStore.all((err, sessions) => {
+      seshLis: req.sessionStore.all((err, sessions) => {
         return sessions
       })
     });
+    //testing the output
     console.log(req.sessionStore.all((err, sessions) => {
-      for (i in sessions){
+      for (i of sessions){
         console.log(i)
       }
     }))
