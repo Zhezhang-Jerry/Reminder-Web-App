@@ -17,9 +17,10 @@ I worked on the following tasks:
 
 Ramansh:
 I worked on the following tasks:
-1. <Insert Some Task Here> - This task is responsible for xyz functionality.
-2. <Insert Some Task Here> - This task is responsible for xyz functionality.
-3. <Insert Some Task Here> - This task is responsible for xyz functionality.
+1. Assigned roles to users and customized middleware to filter based on set roles.  - 
+2. rectifying routes so all active users are displayed in set format when /auth/admin is visited - This task is responsible for xyz functionality.
+Updated Trello Board
+
 
 
 
