@@ -1,3 +1,32 @@
+November 15th (Third Sprint Complete)
+
+Jerry:
+I worked on the following tasks:
+1. "Watched the passport.js videos"
+2. "Finish the local login part"
+3. "Add the logout button"
+4. "Finish the register function"
+
+
+Joy:
+I worked on the following tasks:
+1. "Created dashboard page. Admin user and regular user have different information on the page"
+2. "Show github picture on the dashboard page if user choose to log in using github"
+3. "Under admin page, show all sessionId and userID. Each session has an individual revoke button so Admin can revoke other regular user session and his own session"
+4. "For new users, a random picture will be generated when they regieter an account and show up under the dahsboard page when new user log in"
+5. "users can upload photos locally"
+6. "Once the local photo is selected, the page will automatically refresh and the new photo will be show up"
+
+
+Ramansh:
+I worked on the following tasks:
+1. <Insert Some Task Here> - This task is responsible for xyz functionality.
+2. <Insert Some Task Here> - This task is responsible for xyz functionality.
+3. <Insert Some Task Here> - This task is responsible for xyz functionality.
+
+  
+  
+
 November 8th (Second Sprint Complete)
 
 Jerry:
