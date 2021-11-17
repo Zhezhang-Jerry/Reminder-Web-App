@@ -10,12 +10,7 @@
     <h1>Welcome <%= name %></h1>
     <h2> Current User Sessions </h2>
     <ul>
-        <% activeSessions.forEach(session => { %>
-            <li>
-                <p><%= session %> </p>
-                <p><%= sessions[session].passport.user %> </p>
-            </li>
-        <% }) %> 
+        <h3><%= seshList %> </h3>
     </ul>
 </body>
 </html>

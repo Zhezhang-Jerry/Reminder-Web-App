@@ -42,11 +42,15 @@ let authController = {
   admin: (req, res, next) => {
     res.render("auth/admin", {
       name: req.user.name, 
-      activeSessions: req.sessionStore.all((err, sessions) => {
+      seshList: req.sessionStore.all((err, sessions) => {
         return sessions
-      })});
-    
-    
+      })
+    });
+    console.log(req.sessionStore.all((err, sessions) => {
+      for (i in sessions){
+        console.log(i)
+      }
+    }))
   }
 }
 
