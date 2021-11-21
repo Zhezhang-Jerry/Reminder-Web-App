@@ -6,6 +6,8 @@ I worked on the following tasks:
 2. "Finish the local login part"
 3. "Add the logout button"
 4. "Finish the register function"
+5. "Finish the github login"
+6. "Add admin user who can revoke other session"
 
 
 Joy:
