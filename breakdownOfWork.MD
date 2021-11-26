@@ -1,3 +1,27 @@
+November 22nd (Fourth Sprint Complete)
+
+Jerry:
+I worked on the following tasks:
+1. ""
+
+
+Joy:
+I worked on the following tasks:
+1. "set up prisma and create user and reminder model"
+2. "import three local user information into prisma studio"
+3. "switch local login to prisam instead of local database"
+4. "when user first login in with github account, upload the user information to prisma database" 
+
+
+Ramansh:
+I worked on the following tasks:
+1. <Insert Some Task Here> - This task is responsible for xyz functionality.
+  
+  
+  
+  
+  
+
 November 15th (Third Sprint Complete)
 
 Jerry:
@@ -26,6 +50,8 @@ I worked on the following tasks:
 2. <Insert Some Task Here> - This task is responsible for xyz functionality.
 3. <Insert Some Task Here> - This task is responsible for xyz functionality.
 
+  
+  
   
   
 
