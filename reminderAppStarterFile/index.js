@@ -7,6 +7,8 @@ const session = require("express-session"); //
 const sessionStore = require("sessionstore")
 const multer = require("multer");
 const imgur = require("imgur")
+const { PrismaClient } = require("@prisma/client");
+const prisma = new PrismaClient;
 
 const reminderRoute = require("./routes/reminderRoute");
 const authRoute = require("./routes/authRoute");
@@ -70,9 +72,9 @@ app.use(passport.session()); // use session
 app.use("/reminder", reminderRoute);
 app.use("/auth", authRoute);
 
-app.listen(3001, function () {
+app.listen(3002, function () {
   console.log(
-    "Server running. Visit: localhost:3001 in your browser 🚀"
+    "Server running. Visit: localhost:3002 in your browser 🚀"
   );
 });
 

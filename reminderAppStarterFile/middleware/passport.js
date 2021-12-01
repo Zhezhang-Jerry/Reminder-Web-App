@@ -2,19 +2,34 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 const GitHubStrategy = require("passport-github2").Strategy
 const userController = require("../controller/userController");
+const { PrismaClient } = require("@prisma/client");
+const prisma = new PrismaClient;
 const localLogin = new LocalStrategy(
   {
     usernameField: "email",
     // passwordField: "password",
   },
-  (email, password, done) => {
-    const user = userController.getUserByEmailIdAndPassword(email, password);
-    return user
-      ? done(null, user)
-      : done(null, false, {
-          message: "Your login details are not valid. Please try again",
-        });
+  async(email, password, done) => {
+    const user = await prisma.user.findUnique({
+      where: {email}
+        })
+      if (user && user.password == password ) {
+        return done(null, user)
+      }
+      return done(null, false, {
+        message: "Your login details are not valid. Please try agian"
+      }) 
+
   }
+
+  // (email, password, done) => {
+  //   const user = userController.getUserByEmailIdAndPassword(email, password);
+  //   return user
+  //     ? done(null, user)
+  //     : done(null, false, {
+  //         message: "Your login details are not valid. Please try again",
+  //       });
+  // }
 );
 
 
