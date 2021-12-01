@@ -1,18 +1,25 @@
 let database = require("../database");
-let userObject = require("../models/userModel").userObject
 const userController = require("./userController")
 const session = require("express-session");
 const sessionStore = require("sessionstore")
-
+const { PrismaClient } = require("@prisma/client");
+const prisma = new PrismaClient;
+let userObject = require("../models/userModel")
 
 let remindersController = {
-  dashboard: (req,res) => {
-    res.render("reminder/dashboard", { user: req.user, userPosition: req.user.position})
-  },
-  admin: (req, res) => {
-    let user = userController.getUserPosition(req.user.id)
-    const sessionIDArray = Object.keys(req.sessionStore.sessions)
-    if (user.position == "admin") {
+  dashboard: async (req,res) => {
+    let id = req.user.id
+    let user = await prisma.user.findUnique( {where: {id}})
+    console.log(req.sessionID)
+    userObject[req.sessionID] = id
+    res.render("reminder/dashboard", { user: user, userPosition: user.role})
+  }, 
+  admin: async (req, res) => {
+    let id = req.user.id
+    let user = await prisma.user.findUnique( {where: {id}})
+    // const sessionIDArray = Object.keys(req.sessionStore.sessions)
+    // console.log(sessionIDArray)
+    if (user.role == "admin") {
       res.render("reminder/admin", { user: req.user, userObject: userObject })}
     },
   destroy: (req, res) => {

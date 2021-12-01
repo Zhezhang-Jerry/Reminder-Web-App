@@ -1,6 +1,6 @@
 let database = require("../models/userModel").loginDatabase;
 const passport = require("../middleware/passport");
-let userObject = require("../models/userModel").userObject
+let userObject = require("../controller/reminder_controller").userObject
 const session = require("express-session"); //
 const fetch = require("node-fetch")
 const { PrismaClient } = require("@prisma/client");
@@ -18,10 +18,11 @@ let authController = {
 
   loginSubmit: (req, res, next) => {
     passport.authenticate("local", {
-    successRedirect: "/reminder/dashboard", // req.login()
-    failureRedirect: "/auth/login",
-  }) (req, res, next)
-    // userObject[req.sessionID] = req.user.id
+      successRedirect: "/reminder/dashboard", // req.login()
+      failureRedirect: "/auth/login",
+    }) (req, res, next)
+
+//     userObject[req.sessionID] = req.user.id
 },
 
   registerSubmit: async (req, res) => {
