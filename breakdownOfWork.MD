@@ -2,7 +2,7 @@ November 22nd (Fourth Sprint Complete)
 
 Jerry:
 I worked on the following tasks:
-1. ""
+1. "set prisma and push all register information to prisma"
 
 
 Joy:
