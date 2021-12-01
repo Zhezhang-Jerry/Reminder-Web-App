@@ -3,6 +3,7 @@ November 22nd (Fourth Sprint Complete)
 Jerry:
 I worked on the following tasks:
 1. "set prisma and push all register information to prisma"
+2. "finish the admin part by loading roles from prsima"
 
 
 Joy:
