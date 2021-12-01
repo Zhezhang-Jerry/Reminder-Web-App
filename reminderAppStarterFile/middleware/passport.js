@@ -1,24 +1,8 @@
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 const GitHubStrategy = require("passport-github2").Strategy;
-const userController = require("../controller/userController");
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient()
-// const prisma = require("../databaseConnection");
-
-// const localLogin = new LocalStrategy(
-//   {
-//     usernameField: "email",
-//   },
-//   (email, password, done) => {
-//     const user = userController.getUserByEmailIdAndPassword(email, password);
-//     return user
-//       ? done(null, user)
-//       : done(null, false, {
-//           message: "Your login details are not valid. Please try again",
-//         });
-//   }
-// );
 
 const localLogin = new LocalStrategy(
   {
@@ -61,18 +45,6 @@ const localLogin = new LocalStrategy(
 // );
 
 
-// const gitHubLogic = new GitHubStrategy(
-//   {
-//     clientID: process.env.GITHUB_ID,
-//     clientSecret: process.env.GITHUB_SECRET,
-//     callbackURL: "http://localhost:3001/auth/github/callback",
-//   },
-//   (accessToken, refreshToken, profile, done) => {
-//     let user = userController.getUserByGitHubIdOrCreate(profile);
-//     return done(null, user);
-//   }
-// );
-
 const gitHubLogic = new GitHubStrategy(
   {
     clientID: process.env.GITHUB_ID,
@@ -80,13 +52,13 @@ const gitHubLogic = new GitHubStrategy(
     callbackURL: "http://localhost:3001/auth/github/callback",
   },
   async (accessToken, refreshToken, profile, done) => {
-    let user = await prisma.user.findUnique( {where: {id: Integer.parseInt(profile.id)}})
+    let user = await prisma.user.findUnique( {where: {id: parseInt(profile.id)}})
     if (user) {
       return done(null, user);
     } else {
       user = await prisma.user.create({
         data: {
-          id : Integer.parseInt(profile.id),
+          id : parseInt(profile.id),
           name: profile.username,
           pic: profile.photos[0].value,
         }
