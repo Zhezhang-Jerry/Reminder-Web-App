@@ -1,9 +1,9 @@
-const express = require("express"); //
-const app = express(); //
+const express = require("express");
+const app = express();
 require("dotenv").config()
-const path = require("path"); //
-const ejsLayouts = require("express-ejs-layouts"); //
-const session = require("express-session"); //
+const path = require("path");
+const ejsLayouts = require("express-ejs-layouts");
+const session = require("express-session"); 
 const sessionStore = require("sessionstore")
 const multer = require("multer");
 const imgur = require("imgur")
@@ -26,7 +26,7 @@ const upload = multer({
   storage: storage,
 });
 
-app.use(express.static(path.join(__dirname, "public"))); //
+app.use(express.static(path.join(__dirname, "public")));
 
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: false })); // req.body
@@ -45,27 +45,9 @@ app.use(
       store: sessionStore.createSessionStore()
     },
   })
-); //
+); 
 
-// app.use((req, res, next) => {
-//   console.log(`User details are: `);
-//   console.log(req.user);
-
-//   console.log("Entire session object:");
-//   console.log(req.session);
-
-//   console.log("SessionID: ")
-//   console.log(req.sessionID)
-
-//   console.log("store")
-//   console.log(req.sessionStore)
-
-//   console.log(`Session details are: `);
-//   console.log(req.session.passport);
-//   next();
-// });
-
-const passport = require("./middleware/passport"); //
+const passport = require("./middleware/passport");
 app.use(passport.initialize()); // use passport
 app.use(passport.session()); // use session
 

@@ -14,7 +14,7 @@ model User {
   id        Int      @id @default(autoincrement())
   name      String
   email     String?   @unique   
-  password   String
+  password   String?
   role      String  @default("user")
   picture   String
   reminders   Reminder[]
@@ -23,12 +23,12 @@ model User {
 }
 
 model Reminder {
-  id          Int     @id
+  id          Int     @id @default(autoincrement())
   user        User    @relation(fields: [userID], references: [id])
   userID      Int
   title       String
   description String
-  complete    Boolean @default(false)
+  completed    Boolean @default(false)
 
   @@map(name: "reminders")
 }

@@ -3,12 +3,12 @@ const passport = require("../middleware/passport");
 const imgur = require("imgur");
 const fs = require("fs");
 const loginDatabase = require("../models/userModel").loginDatabase
-
+const { PrismaClient } = require("@prisma/client");
+const prisma = new PrismaClient();
 
 const reminderController = require("../controller/reminder_controller"); //
 
 const { ensureAuthenticated } = require("../middleware/checkAuth"); //
-const database = require("../database");
 
 const router = express.Router();
 
@@ -16,15 +16,23 @@ router.get("/dashboard", ensureAuthenticated, reminderController.dashboard)
 
 router.post("/uploads/", async (req, res) => {
     const file = req.files[0];
+    const id = req.user.id
+    console.log(id)
     try {
       const url = await imgur.uploadFile(`./uploads/${file.filename}`);
       const piclink = url.link.split(".").slice(0,-1).join(".") + "m.jpeg"
       console.log(piclink);
-      loginDatabase.forEach( (e) => {
-        if ((req.user.id) === e.id) {
-          e.pic = piclink
-        }
+      const user = await prisma.user.update({
+        where: {id},
+        data: { picture: piclink}
       })
+
+      // loginDatabase.forEach( (e) => {
+      //   if ((req.user.id) === e.id) {
+      //     e.pic = piclink
+      //   }
+      // })
+      
       fs.unlinkSync(`./uploads/${file.filename}`);
       res.redirect("/dashboard")
     } catch (error) {

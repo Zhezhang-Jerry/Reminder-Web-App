@@ -1,5 +1,3 @@
-let database = require("../database");
-const userController = require("./userController")
 const session = require("express-session");
 const sessionStore = require("sessionstore")
 const { PrismaClient } = require("@prisma/client");
@@ -10,15 +8,12 @@ let remindersController = {
   dashboard: async (req,res) => {
     let id = req.user.id
     let user = await prisma.user.findUnique( {where: {id}})
-    console.log(req.sessionID)
     userObject[req.sessionID] = id
     res.render("reminder/dashboard", { user: user, userPosition: user.role})
   }, 
   admin: async (req, res) => {
     let id = req.user.id
     let user = await prisma.user.findUnique( {where: {id}})
-    // const sessionIDArray = Object.keys(req.sessionStore.sessions)
-    // console.log(sessionIDArray)
     if (user.role == "admin") {
       res.render("reminder/admin", { user: req.user, userObject: userObject })}
     },
@@ -28,57 +23,71 @@ let remindersController = {
       delete userObject[userSessionID]
       res.render("reminder/admin", {user: req.user, userObject: userObject})
   },
-  list: (req, res) => {
-    res.render("reminder/index", { reminders: database.cindy.reminders });
+  list: async (req, res) => {
+    let reminders = await prisma.reminder.findMany({
+      where: { userID: req.user.id}
+    })
+    res.render("reminder/index", { reminders: reminders });
   },
 
   new: (req, res) => {
     res.render("reminder/create");
   },
 
-  listOne: (req, res) => {
+  listOne: async (req, res) => {
     let reminderToFind = req.params.id;
-    let searchResult = database.cindy.reminders.find(function (reminder) {
-      return reminder.id == reminderToFind;
-    });
-    if (searchResult != undefined) {
-      res.render("reminder/single-reminder", { reminderItem: searchResult });
+    // });
+    let reminder = await prisma.reminder.findUnique({ where: {id: parseInt(reminderToFind)}})
+    let reminders = await prisma.reminder.findMany({where: {userID: req.user.id}})
+    if (reminder != undefined) {
+      res.render("reminder/single-reminder", { reminderItem: reminder });
     } else {
-      res.render("reminder/index", { reminders: database.cindy.reminders });
+      res.render("reminder/index", { reminders: reminders });
     }
   },
 
-  create: (req, res) => {
-    let reminder = {
-      id: database.cindy.reminders.length + 1,
-      title: req.body.title,
-      description: req.body.description,
-      completed: false,
-    };
-    database.cindy.reminders.push(reminder);
+  create: async (req, res) => {
+    let userID = req.user.id;
+    let title = req.body.title;
+    let description = req.body.description;
+    let completed = (req.body.completed === "true");
+    const reminder = await prisma.reminder.create({
+      data: {userID, title, description, completed}
+    })
     res.redirect("/reminder");
   },
 
-  edit: (req, res) => {
+  edit: async (req, res) => {
     let reminderToFind = req.params.id;
-    let searchResult = database.cindy.reminders.find(function (reminder) {
-      return reminder.id == reminderToFind;
-    });
-    res.render("reminder/edit", { reminderItem: searchResult });
+    let reminder = await prisma.reminder.findUnique({ where: {id: parseInt(reminderToFind)}})
+    res.render("reminder/edit", { reminderItem: reminder });
   },
   
-  update: (req, res) => {
+  update: async (req, res) => {
     let reminderToFind = req.params.id;
-    let reminderArray = database.cindy.reminders[reminderToFind - 1]
-    reminderArray["title"] = req.body.title
-    reminderArray["description"] = req.body.description
-    reminderArray["completed"] = req.body.completed === "true"
+    // let reminderArray = database.cindy.reminders[reminderToFind - 1]
+    // reminderArray["title"] = req.body.title
+    // reminderArray["description"] = req.body.description
+    // reminderArray["completed"] = req.body.completed === "true"
+    let reminder = await prisma.reminder.findUnique({ where: {id: parseInt(reminderToFind)}})
+    let title = req.body.title;
+    let description = req.body.description;
+    let completed = (req.body.completed === "true");
+    console.log(completed)
+    const user = await prisma.reminder.update({
+      where: {id: reminder.id},
+      data: {title, description, completed}
+    })
     res.redirect("/reminder");
   },
 
-  delete: (req, res) => {
+  delete: async (req, res) => {
     let reminderToFind = req.params.id;
-    database.cindy.reminders.splice(reminderToFind-1, 1);
+    // database.cindy.reminders.splice(reminderToFind-1, 1);
+    let reminder = await prisma.reminder.findUnique({ where: {id: parseInt(reminderToFind)}})
+    let reminderTodelete = await prisma.reminder.delete({
+      where: {id: reminder.id}
+    })
     res.redirect("/reminder");
   },
 };
