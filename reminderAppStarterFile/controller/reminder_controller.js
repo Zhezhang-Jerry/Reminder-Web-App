@@ -65,15 +65,10 @@ let remindersController = {
   
   update: async (req, res) => {
     let reminderToFind = req.params.id;
-    // let reminderArray = database.cindy.reminders[reminderToFind - 1]
-    // reminderArray["title"] = req.body.title
-    // reminderArray["description"] = req.body.description
-    // reminderArray["completed"] = req.body.completed === "true"
     let reminder = await prisma.reminder.findUnique({ where: {id: parseInt(reminderToFind)}})
     let title = req.body.title;
     let description = req.body.description;
     let completed = (req.body.completed === "true");
-    console.log(completed)
     const user = await prisma.reminder.update({
       where: {id: reminder.id},
       data: {title, description, completed}
@@ -83,7 +78,6 @@ let remindersController = {
 
   delete: async (req, res) => {
     let reminderToFind = req.params.id;
-    // database.cindy.reminders.splice(reminderToFind-1, 1);
     let reminder = await prisma.reminder.findUnique({ where: {id: parseInt(reminderToFind)}})
     let reminderTodelete = await prisma.reminder.delete({
       where: {id: reminder.id}

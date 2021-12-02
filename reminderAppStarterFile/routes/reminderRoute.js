@@ -26,13 +26,6 @@ router.post("/uploads/", async (req, res) => {
         where: {id},
         data: { picture: piclink}
       })
-
-      // loginDatabase.forEach( (e) => {
-      //   if ((req.user.id) === e.id) {
-      //     e.pic = piclink
-      //   }
-      // })
-      
       fs.unlinkSync(`./uploads/${file.filename}`);
       res.redirect("/dashboard")
     } catch (error) {
