@@ -17,11 +17,9 @@ router.get("/dashboard", ensureAuthenticated, reminderController.dashboard)
 router.post("/uploads/", async (req, res) => {
     const file = req.files[0];
     const id = req.user.id
-    console.log(id)
     try {
       const url = await imgur.uploadFile(`./uploads/${file.filename}`);
       const piclink = url.link.split(".").slice(0,-1).join(".") + "m.jpeg"
-      console.log(piclink);
       const user = await prisma.user.update({
         where: {id},
         data: { picture: piclink}
